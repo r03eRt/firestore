@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-jumbotron
+        <v-responsive
             color="teal"
             dark height="50px"
         >
@@ -13,7 +13,7 @@
                    </v-flex>
                </v-layout>
            </v-container>
-        </v-jumbotron>
+        </v-responsive>
 
         <v-form id="nativeForm" v-model="valid">
             <v-text-field
@@ -22,7 +22,7 @@
                 :rules="emailRules"
                 required
                 name="email"
-            >
+            />
             <v-text-field
                 :label="$t('auth.password')"
                 v-model="password"
@@ -30,18 +30,16 @@
                 required
                 type="password"
                 name="password"
-            >
+            />
             <v-text-field
-                v-id="action === 'register'"
+                v-if="action === 'register'"
                 :label="$t('auth.password_confirmation')"
                 v-model="password_confirmation"
                 :rules="password_confirmationRules"
                 required
                 type="password"
                 name="password_confirmation"
-            >
-
-            </v-text-field>
+            />
             <v-btn
                 @click="submit"
                 color="teal"
@@ -67,13 +65,13 @@
                     (v) => !!v || this.$t('validations.required', {field: 'E-mail'}),
                     (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.$t('validations.email', {field: 'E-mail'})
                 ],
-                pasword: '',
-                paswordRules: [
+                password: '',
+                passwordRules: [
                     (v) => !!v || this.$t('validations.required', {field: 'Password'}),
                     (v) => v.length >= 6 || this.$t('validations.minLength', {field: 'Password', length: 6})
                 ],
                 password_confirmation: '',
-                pasword_confirmationRules: [
+                password_confirmationRules: [
                     (v) => !!v || this.$t('validations.required', {field: 'Password'}),
                     (v) => v.length >= 6 || this.$t('validations.minLength', {field: 'Password', length: 6}),
                     (v) => v === this.password || this.$t('validations.password_confirmation')

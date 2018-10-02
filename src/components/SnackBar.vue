@@ -6,14 +6,14 @@
     >
         {{ text }}
         <v-btn dark flat @click="showSnack = false">
-            {{ $t('message.close') }}
+            {{ $t('messages.close') }}
         </v-btn>
     </v-snackbar>
 </template>
 <script>
     export default {
         name: 'app-snack-bar',
-        props: ['snackbar', 'timeout', 'text'],
+        props: ['snackBar', 'timeout', 'text'],
         data () {
             return {
                 color: 'primary',

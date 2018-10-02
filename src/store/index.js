@@ -4,6 +4,8 @@ import Vuex from 'vuex';
 // Utilizamos el plugin
 Vue.use(Vuex);
 
+import authModule from '@/modules/auth'
+
 export default new Vuex.Store({
   state: {
     processing: false,
@@ -32,6 +34,6 @@ export default new Vuex.Store({
     }
   },
   modules: {
-
+      authModule
   }
 })
