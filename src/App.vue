@@ -1,15 +1,24 @@
 <template>
   <main>
     <v-app>
-      <router-view></router-view>
+      <v-content>
+        <guest-navigation></guest-navigation>
+          <v-container class="mt-5 mb-3">
+            <router-view></router-view>
+          </v-container>
+      </v-content>
     </v-app>
   </main>  
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  import GuestNavigation from '@/navigations/guest';
+  export default {
+      name: 'App',
+      components: {
+          GuestNavigation
+      }
+  }
 </script>
 
 <style>
@@ -19,6 +28,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
